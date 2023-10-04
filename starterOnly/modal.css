@@ -587,7 +587,7 @@ input[data-error]::after {
   font-weight: bolder;
 }
 .hero-section > .btn-signup {
-  display: none;
+
 }
 footer {
   padding-left: 2vw;

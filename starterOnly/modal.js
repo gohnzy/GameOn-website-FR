@@ -27,6 +27,17 @@ closeBtn.addEventListener("click", () => {
 
 })
 
+modalbg.addEventListener("click", (event) => {
+
+  if (event.target === modalbg) { 
+
+    content.classList.replace("content", "reverse")
+    modalbg.style.background = "transparent"
+    setTimeout (closeModal, 400)
+  }
+
+})
+
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
@@ -42,18 +53,14 @@ function closeModal() {
 
 }
 
-// remove <br> for mobile view
+/* remove <br> for mobile view
 
 let width800 = window.matchMedia("(max-width: 800px)")
 
-function removeBr(width800) {
+if (width800.matches) {
 
-  if (width800.matches) {
-
-    respBr.classList.add("remove-br")
-
-  }
+  respBr.classList.add("remove-br")
 
 }
 
-removeBr(width800)
+*/
