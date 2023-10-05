@@ -14,7 +14,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -28,6 +27,7 @@ p {
 
 img {
   padding-right: 1rem;
+
 }
 
 .topnav {
@@ -39,6 +39,11 @@ img {
 }
 .main-navbar {
     float: right;
+}
+.main-navbar i {
+
+  color: rgb(255, 0, 27);
+
 }
 .topnav a {
   float: left;
@@ -68,7 +73,7 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1040px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
@@ -88,10 +93,27 @@ img {
     display: block;
     text-align: left;
   }
+
+  
 }
 
 
+  @media (max-width:801px) {
+    
+  .header-logo {
 
+    width: 103px;
+    height: 19px;
+   
+  }
+
+  .header-logo img {
+
+    width: 103px;
+    height: 19px;
+    padding: 0;
+  }
+  }
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -99,6 +121,7 @@ img {
     display: block;
     margin-top: -15px;
   }
+
 } 
 
 main {
@@ -111,8 +134,21 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
+  max-width: 1240px;
 
+}
 
+@media (max-width: 540px) {
+  body {
+
+    padding: 20px 10px;
+
+  }
+
+  main {
+
+padding: 0;
+  }
 }
 
 .modal-btn {
@@ -173,8 +209,10 @@ main {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
+  -webkit-animation-name: modalopen;
+          animation-name: modalopen;
+  -webkit-animation-duration: var(--modal-duration);
+          animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
@@ -182,6 +220,49 @@ main {
   color: #fff;
   padding-top: 10px;
 }
+
+.reverse {
+
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  -webkit-animation-name: closemodal;
+          animation-name: closemodal;
+
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+  
+}
+
+
+@-webkit-keyframes closemodal {
+  from {
+    opacity: 1;
+
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+}
+
+@keyframes closemodal {
+  from {
+    opacity: 1;
+
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+}
+
 
 .modal-body {
   padding: 15px 8%;
@@ -405,8 +486,10 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+
   border-radius: 10px;
+  max-width: 1240px;
+
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
@@ -421,6 +504,8 @@ input[data-error]::after {
   position: relative;
   text-align: left;
   min-width: 424px;
+  max-height: 657px;
+
 }
 .hero-content::after {
   content: "";
@@ -430,6 +515,8 @@ input[data-error]::after {
   position: absolute;
   right: -80px;
   top: 0;
+  max-height: 657px;
+
 }
 .hero-content > * {
   position: relative;
@@ -459,34 +546,74 @@ input[data-error]::after {
 }
 .hero-img img {
   width: 100%;
+
+  max-height: 657px;
   height: 100%;
   display: block;
   padding: 0;
 }
+
+@media (max-width:1040px) and  (min-width:945px){
+  
+  .hero-img img {
+
+    -o-object-fit: cover;
+
+       object-fit: cover;
+  }
+
+}
+
+@media (max-width:945px) and  (min-width:800px){
+  
+  .hero-img img {
+
+    -o-object-fit: cover;
+
+    object-fit: cover;
+
+    -o-object-position: 70%;
+
+    object-position: 70%;
+  }
+
+}
+
 .copyrights {
   color: #fe142f;
   padding: 0;
   font-size: 1rem;
-  margin: 60px 0 30px;
+  margin: 60px 0 0px;
   font-weight: bolder;
 }
 .hero-section > .btn-signup {
-  display: none;
+
 }
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
-  margin: 0 20px;
+  margin: auto;
 }
 @media screen and (max-width: 800px) {
+
+  .remove-br {
+
+    display: none;
+
+  }
+
   .hero-section {
     display: block;
     box-shadow: unset;
+    margin-bottom: 0;
   }
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
+    min-width: -webkit-fit-content;
+    min-width: -moz-fit-content;
+    min-width: fit-content;
   }
   .hero-content::after {
     content: unset;
@@ -495,25 +622,63 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 40px;
+    font-weight: 600;
     white-space: normal;
   }
   .hero-text {
-    width: unset;
-    font-size: 1.5rem;
+    width: 87%;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 17px;
+    margin-top: 20px;
+    padding: 0;
   }
+
+  .hero-img {
+
+    height: 329px;
+
+  }
+
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
+    margin-top: 20px;
+    height: 100%;
   }
   .hero-section > .btn-signup {
     display: block;
-    margin: 32px auto 10px;
-    padding: 12px 35px;
+    margin: 32px auto 0px;
+    padding: 0;
+    padding: 5px 40px;
+    height: 31px;
+    font-size: 14px;
+    
   }
   .copyrights {
-    margin-top: 50px;
+    margin-top: 20px;
     text-align: center;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1020px) {
+
+  .hero-headline {
+
+    font-size: 4.5rem;
+
+  }
+  
+}
+
+@-webkit-keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
   }
 }
 
