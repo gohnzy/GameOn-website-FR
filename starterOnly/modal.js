@@ -1,9 +1,14 @@
 
 
+
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelector(".modal-btn");
+const modalBtn = document.querySelector(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const closeBtn = document.querySelector(".close")
+const content = document.getElementById("modalContent")
+const respBr = document.querySelector(".responsive-br")
 const closeBtn = document.querySelector(".close")
 const content = document.getElementById("modalContent")
 const respBr = document.querySelector(".responsive-br")
@@ -53,14 +58,18 @@ function closeModal() {
 
 }
 
-/* remove <br> for mobile view
+// remove <br> for mobile view
 
 let width800 = window.matchMedia("(max-width: 800px)")
 
-if (width800.matches) {
+function removeBr(width800) {
 
-  respBr.classList.add("remove-br")
+  if (width800.matches) {
+
+    respBr.classList.add("remove-br")
+
+  }
 
 }
 
-*/
+removeBr(width800)
