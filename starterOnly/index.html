@@ -51,7 +51,6 @@
           je m'inscris
         </button>
       </div>
-
       <div class="bground">
         <div class="content" id="modalContent">
           <span class="close"></span>
@@ -60,57 +59,56 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              novalidate
             >
               <div
-                class="formData">
+                class="formData" id="formFirst" data-error="Le prénom doit comporter au moins deux lettres" data-error-visible="false">
                 <label for="first">Prénom</label>
                 <input
                   class="text-control"
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
-                /><br>
+                />
               </div>
               <div
-                class="formData">
+                class="formData" id="formLast" data-error="Le nom doit comporter au moins deux lettres" data-error-visible="false">
                 <label for="last">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
-                /><br>
+                />
               </div>
               <div
-                class="formData">
+                class="formData" id="formEmail" data-error="L'adresse mail n'est pas valide" data-error-visible="false">
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
                   type="email"
                   id="email"
                   name="email"
-                /><br>
+                />
               </div>
               <div
-                class="formData">
+                class="formData" id="formBirthdate" data-error="Veuillez entrer votre date de naissance" data-error-visible="false">
                 <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                /><br>
+                />
               </div>
               <div
-                class="formData">
+                class="formData" id="formTournaments" data-error="Veuillez renseigner ce champ même si votre réponse est 0." data-error-visible="false">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData" id="locations" data-error="Sélectionnez le lieu de votre choix" data-error-visible="false">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -180,14 +178,14 @@
               </div>
 
               <div
-                class="formData">
+                 id="formConditions" data-error-visible="false">
                 <input
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
@@ -204,6 +202,7 @@
                 type="submit"
                 class="button"
                 value="C'est parti"
+                id="submitForm"
               />
             </form>
           </div>
@@ -216,5 +215,7 @@
       </p>
     </footer>
     <script src="modal.js"></script>
+    <script src="form.js"></script>
+    <script src="navbar.js"></script>
   </body>
 </html>

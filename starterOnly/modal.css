@@ -192,10 +192,17 @@ main {
   z-index: 1;
   left: 0;
   top: 0;
-  height: 100%;
   width: 100%;
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
+}
+
+@media (max-width:800px) {
+  .bground {
+
+    background-color: transparent;
+
+  }
 }
 
 .content {
@@ -212,6 +219,17 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+}
+
+@media (max-width:800px) {
+  .content {
+    top: 103px;
+    max-width: 800px;
+    height: 100vh;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+  }
 }
 
 .reverse {
@@ -274,6 +292,12 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
+
+form div {
+  max-width: 500px;
+
+}
+
 .text-control {
   margin: 0;
   padding: 8px;
@@ -287,19 +311,52 @@ input {
   font-size: 0.4em;
   color: #e54858;
   display: block;
+  position: absolute;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  right: 50px;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
 }
 .formData[data-error-visible="true"]::after {
   opacity: 1;
+  display: block;
 }
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
+
+#formConditions[data-error-visible="true"] [for="checkbox1"]{
+
+  color: #e54858;
+
+}
+
+#formConditions[data-error-visible="true"] [for="checkbox1"] span {
+
+  background-color: #e54858;
+
+}
+
+.checkbox-input:checked #formConditions[data-error-visible="true"] [for="checkbox1"] span {
+
+  background-color: #e54858;
+
+}
+
+#locations[data-error-visible="true"]::after {
+  
+  margin-top: -18px;
+
+}
+
+#formTournaments {
+
+  margin: 15px 0px;
+
+}
+
 /* 
 input[data-error]::after {
     content: attr(data-error);
@@ -416,7 +473,7 @@ input[data-error]::after {
 
 .btn-submit {
 
-  margin: 0 auto;
+  margin: 15px auto 0 auto;
   padding: 12px 82px;
 
 }

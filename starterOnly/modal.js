@@ -1,24 +1,6 @@
-
-
-const x = document.getElementById("myTopnav");
-function editNav() {
-  var xx = document.getElementById("icon")
-  var xxx = document.getElementById("icon-link")
-  if (x.className === "main-navbar") {
-    x.className += " responsive";
-    xx.style.color="white"
-    xxx.style.background="rgb(255, 0, 27)"
-
-  } else {
-    x.className = "main-navbar";
-    xx.style.color="rgb(255, 0, 27)"
-    xxx.style.background="white"
-  }
-}
-
 // DOM Elements
 const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelector(".modal-btn");
+const modalBtn = document.querySelectorAll(".btn-signup");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close")
 const content = document.getElementById("modalContent")
@@ -26,13 +8,10 @@ const respBr = document.querySelector(".responsive-br")
 
 // launch modal event
 
-modalBtn.addEventListener("click", () => {
+modalBtn.forEach((btn) => btn.addEventListener("click",launchModal))
 
-  launchModal()
 
-})
-
-// close modal event
+// close modal event - button
 
 
 closeBtn.addEventListener("click", () => {
@@ -42,6 +21,8 @@ closeBtn.addEventListener("click", () => {
   setTimeout (closeModal, 400)
 
 })
+
+// close modal event - outside click
 
 modalbg.addEventListener("click", (event) => {
 
@@ -54,6 +35,16 @@ modalbg.addEventListener("click", (event) => {
 
 })
 
+// Remove <br> for responsive
+
+let width800 = window.matchMedia("(max-width: 800px)")
+function removeBr(width800) {
+  if (width800.matches) {
+    respBr.classList.add("remove-br")
+  }
+}
+removeBr(width800)
+
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
@@ -64,23 +55,9 @@ function launchModal() {
 function closeModal() {
   
   modalbg.style.display ="none"
+  if (width800.matches)
   modalbg.style.background = "rgba(26, 39, 156, 0.4)"
   content.classList.replace("reverse", "content")
 
 }
 
-// remove <br> for mobile view
-
-let width800 = window.matchMedia("(max-width: 800px)")
-
-function removeBr(width800) {
-
-  if (width800.matches) {
-
-    respBr.classList.add("remove-br")
-
-  }
-
-}
-
-removeBr(width800)
