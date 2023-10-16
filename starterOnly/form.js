@@ -117,6 +117,7 @@ function validate() {
   } 
   if (calcAge() < 16 || calcAge() >= 76) {
     formBirthdate.setAttribute("data-error-visible", "true")
+    formBirthdate.setAttribute("data-error", "Vous devez avoir plus de 16 ans et moins de 76 ans")
     validate = false
   }
   else {
