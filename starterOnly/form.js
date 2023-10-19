@@ -21,7 +21,7 @@ let formConditions = document.getElementById("formConditions")
 
 function itLocation() {
   let x = null
-  for (let i = 0; i<locations.length; i++) {
+  for (let i = 0; i < locations.length; i++) {
     if (locations[i].checked) {
       x = locations[i].value
     }
@@ -29,21 +29,9 @@ function itLocation() {
   return x
 }
 
-// Email check function 
-
-function emailCheck() {
-
+// RegExp
+  let textRegExp = new RegExp("^[a-zA-Z-' ]+$")
   let mailRegExp = new RegExp("^[a-z0-9.-_]+@[a-z0-9.-_]+\\.[a-z0-9.-_]+")
-
-  if (!mailRegExp.test(email.value)) {
-      return false
-  }
-
-  else { 
-    return true
-
-  }
-}
 function calcAge () {
   let age = 0
 
@@ -88,42 +76,39 @@ function calcAge () {
 // Validate function
 function validate() {
   let validate = true
-  if(first.value.length < 2) {
+  if(first.value.length < 2 || !textRegExp.test(first.value)) {
     formFirst.setAttribute("data-error-visible", "true")
     validate = false
   }
   else { formFirst.setAttribute("data-error-visible", "false") 
   }  
-  if(last.value.length < 2) {
+  if(last.value.length < 2 || !textRegExp.test(last.value)) {
     formLast.setAttribute("data-error-visible", "true")
     validate = false
 
   }
   else { formLast.setAttribute("data-error-visible", "false") 
   }  
-  if (!emailCheck()) {
+  if (!mailRegExp.test(email.value)) {
     formEmail.setAttribute("data-error-visible", "true")
     validate = false
 
   }
   else { formEmail.setAttribute("data-error-visible", "false") 
   }  
-  if (birthdate.value.length != 10) {
+  if (birthdate.value.length !== 10) {
     formBirthdate.setAttribute("data-error-visible", "true")
     validate = false
-
-  }
-  else { formBirthdate.setAttribute("data-error-visible", "false") 
-  } 
-  if (calcAge() < 16 || calcAge() >= 76) {
-    formBirthdate.setAttribute("data-error-visible", "true")
-    formBirthdate.setAttribute("data-error", "Vous devez avoir plus de 16 ans et moins de 76 ans")
-    validate = false
-  }
-  else {
-    formBirthdate.setAttribute("data-error-visible", "false")
     
-  } 
+  }
+  else { 
+    if (calcAge() < 16 || calcAge() >= 76) {
+      formBirthdate.setAttribute("data-error-visible", "true")
+      formBirthdate.setAttribute("data-error", "Vous devez avoir plus de 16 ans et moins de 76 ans")
+      validate = false
+    }
+    else { formBirthdate.setAttribute("data-error-visible", "false") }
+  }
   if (nbTournaments.value.length === 0) {
     formTournaments.setAttribute("data-error-visible", "true")
     validate = false
@@ -156,7 +141,7 @@ function validateLive() {
   let validate = true
   formFirst.addEventListener("input",()=>{
 
-    if(first.value.length < 2) {
+    if(first.value.length < 2 || !textRegExp.test(first.value)) {
       formFirst.setAttribute("data-error-visible", "true")
       validate = false
     }
@@ -165,7 +150,7 @@ function validateLive() {
 
   })
   formLast.addEventListener("input",()=>{
-  if(last.value.length < 2) {
+  if(last.value.length < 2 || !textRegExp.test(last.value)) {
     formLast.setAttribute("data-error-visible", "true")
     validate = false
 
@@ -174,7 +159,7 @@ function validateLive() {
   }  
 })
 formEmail.addEventListener("input",()=>{
-  if (!emailCheck()) {
+  if (!mailRegExp.test(email.value)) {
     formEmail.setAttribute("data-error-visible", "true")
     validate = false
 
@@ -183,12 +168,18 @@ formEmail.addEventListener("input",()=>{
   }  
 })
 formBirthdate.addEventListener("input",()=>{
-  if (birthdate.value.length != 10) {
+  if (birthdate.value.length !== 10) {
     formBirthdate.setAttribute("data-error-visible", "true")
     validate = false
-
+    
   }
-  else { formBirthdate.setAttribute("data-error-visible", "false") 
+  else { 
+    if (calcAge() < 16 || calcAge() >= 76) {
+      formBirthdate.setAttribute("data-error-visible", "true")
+      formBirthdate.setAttribute("data-error", "Vous devez avoir plus de 16 ans et moins de 76 ans")
+      validate = false
+    }
+    else { formBirthdate.setAttribute("data-error-visible", "false") }
   }  
 })
   formTournaments.addEventListener("input",()=>{

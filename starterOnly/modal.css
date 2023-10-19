@@ -18,7 +18,6 @@ body {
   flex-direction: column;
   font-family: var(--font-default);
   font-size: 18px;
-  
   margin: 0 auto;
 }
 
@@ -34,7 +33,7 @@ img {
 
 .topnav {
   overflow: visible;
-  padding:4% 4vw;
+  padding:4% 4vw 0 4vw;
   margin: auto;
   position: relative;
   width: 100%;
@@ -164,6 +163,10 @@ img {
     .topnav a:hover {
       border-radius: 0px;
     }
+
+    #home:hover {
+      border-radius: 15px 15px 0px 0px;
+    }
   }
 
   .main-navbar.responsive .icon {
@@ -208,6 +211,8 @@ main {
   text-align: justify;
   max-width: 1240px;
   margin: auto;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
 
 }
@@ -262,6 +267,7 @@ main {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
+  max-height: 700px;
   -webkit-animation-name: modalopen;
           animation-name: modalopen;
   -webkit-animation-duration: var(--modal-duration);
@@ -273,22 +279,12 @@ main {
   color: #fff;
   padding-top: 10px;
 }
-
-@media (max-width:800px) {
-  .content {
-    top: 103px;
-    max-width: 800px;
-    display: flex;
-    justify-content: start;
-    align-items: start;
-  }
-}
-
 .reverse {
 
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
+  max-height: 700px;
   -webkit-animation-name: closemodal;
           animation-name: closemodal;
 
@@ -305,13 +301,13 @@ main {
 
 .reverse-resp {
 
-  top: 103px;
+  top: 8%;
   margin: 5% auto;
   width: 100%;
   max-width: 800px;
+  max-height: 700px;
   -webkit-animation-name: closemodal;
           animation-name: closemodal;
-
   -webkit-animation-duration: 0.8s;
           animation-duration: 0.8s;
   background: #232323;
@@ -320,7 +316,68 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+  display: flex;
+    justify-content: start;
+    align-items: start;
 
+}
+
+.validation {
+
+  display: none;
+  flex-direction: column;
+  justify-content: end;
+  gap: 40%;
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  background: #232323;
+  border-radius: 10px;
+  overflow: visible;
+  position: relative;
+  color: #fff;
+  padding: 25px 0;
+  height: 70%;
+}
+
+.validation-r {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 40%;
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  background: #232323;
+  border-radius: 10px;
+  overflow: visible;
+  position: relative;
+  color: #fff;
+  padding: 25px 0;
+  height: 70%;
+  -webkit-animation-name: closemodal;
+  animation-name: closemodal;
+  -webkit-animation-duration: var(--modal-duration);
+  animation-duration: var(--modal-duration);
+}
+
+.validation p,
+.validation-r p {
+
+  font-size: 36px;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (max-width:800px) {
+  .content {
+    top: 8%;
+    max-width: 800px;
+    min-height: 700px;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+  }
 }
 
 
@@ -378,6 +435,8 @@ form div {
   font-size: 20px;
   height: 36px;
 }
+
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -392,19 +451,7 @@ form div {
   transition: 0.3s;
 }
 
-.formData[data-error]::before {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
-  display: block;
-  position: relative;
-  margin-top: 7px;
-  margin-bottom: -2px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
-}
+
 
 .formData[data-error]::after ,
   .formData[data-error-visible="true"]::before{
@@ -421,11 +468,26 @@ form div {
   border: 2px solid #e54858;
 }
 
+#locations[data-error]::before {
+  content: attr(data-error);
+  font-size: 0.4em;
+  color: #e54858;
+  display: block;
+  position: relative;
+  margin-top: 7px;
+  margin-bottom: -2px;
+  text-align: right;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
+}
+
 #locations[data-error-visible="true"]::after{display: none;}
 #locations[data-error-visible="false"]::after{display:none;}
 #locations[data-error-visible="true"]::before{
   opacity: 1;
 }
+
 
 #formConditions[data-error-visible="true"] [for="checkbox1"]{
 
@@ -444,10 +506,32 @@ form div {
   margin: 15px 0px;
 }
 
+@media (max-width:350px) {
+
+  #formTournaments {
+    margin: 0;
+  }
+  
+  #formTournaments label {
+    font-size: 12px;
+  }
+  
+}
+
 #formTournaments + p {
   font-size: 15px;
   margin:0;
 }
+
+
+@media (max-width:350px) {
+  
+  #formTournaments + p {
+    font-size: 12px;
+  }
+  
+}
+
 
 /* 
 input[data-error]::after {
@@ -486,6 +570,11 @@ input[data-error]::after {
   left: -30px;
   top: -1px;
   transition: 0.3s;
+}
+.op {
+  position: absolute;
+  top: 15px;
+  color: lime;
 }
 .checkbox-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
@@ -556,7 +645,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -568,8 +658,15 @@ input[data-error]::after {
   border: 0;
 }
 
+.btn-close {
+  width: 182px;
+  text-align: center;
+  padding: 12px 0px;
+}
+
 .btn-signup:hover,
-.btn-submit:hover {
+.btn-submit:hover,
+.btn-close {
   background: #3876ac;
   transition: 0.25s;
 }
@@ -664,7 +761,6 @@ input[data-error]::after {
 
   border-radius: 10px;
   max-width: 1240px;
-
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   overflow: hidden;

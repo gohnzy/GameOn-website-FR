@@ -1,9 +1,10 @@
 // Navbar responsive display
-
-function editNav() {
-  var x = document.getElementById("myTopnav");
+var x = document.getElementById("myTopnav");
   var xx = document.getElementById("icon")
   var xxx = document.getElementById("icon-link")
+  var main = document.querySelector("main")
+function editNav() {
+  
   if (x.className === "main-navbar") {
     x.className += " responsive";
     xx.style.color="white"
@@ -16,9 +17,9 @@ function editNav() {
   }
 }
 
-x.addEventListener("click", (event) => {
+main.addEventListener("click", (event) => {
 
-  if(event.target!=x){
+  if(event.target!==x && x.className === "main-navbar responsive"){
     x.className = "main-navbar";
   xx.style.color="rgb(255, 0, 27)"
   xxx.style.background="white"

@@ -52,8 +52,13 @@
         </button>
       </div>
       <div class="bground">
+        <div class="validation">
+          <span class="close" id="closeValidationCross"></span>
+          <p>Merci pour <br>votre inscription</p>
+          <span class="btn-close">Fermer</span>
+        </div>
         <div class="content" id="modalContent">
-          <span class="close"></span>
+          <span class="close" id="closeFormCross"></span>
           <div class="modal-body">
             <form
               name="reserve"
@@ -62,7 +67,7 @@
               novalidate
             >
               <div
-                class="formData" id="formFirst" data-error="Le prénom doit comporter au moins deux lettres" data-error-visible="false">
+                class="formData" id="formFirst" data-error="Le prénom doit comporter au moins deux caractères (lettres uniqument)" data-error-visible="false">
                 <label for="first">Prénom</label>
                 <input
                   class="text-control"
@@ -72,7 +77,7 @@
                 />
               </div>
               <div
-                class="formData" id="formLast" data-error="Le nom doit comporter au moins deux lettres" data-error-visible="false">
+                class="formData" id="formLast" data-error="Le nom doit comporter au moins deux caractères (lettres uniqument)" data-error-visible="false">
                 <label for="last">Nom</label><br>
                 <input
                   class="text-control"
