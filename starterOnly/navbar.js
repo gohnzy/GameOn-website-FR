@@ -1,8 +1,14 @@
 // Navbar responsive display
+
+// DOM Elements
+
 var x = document.getElementById("myTopnav");
-  var xx = document.getElementById("icon")
-  var xxx = document.getElementById("icon-link")
-  var main = document.querySelector("main")
+var xx = document.getElementById("icon")
+var xxx = document.getElementById("icon-link")
+var main = document.querySelector("main")
+
+// Nav function
+
 function editNav() {
   
   if (x.className === "main-navbar") {
@@ -16,6 +22,8 @@ function editNav() {
     xxx.style.background="white"
   }
 }
+
+// Close navbar on click beside
 
 main.addEventListener("click", (event) => {
 

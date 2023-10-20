@@ -43,8 +43,10 @@ img {
   justify-content: space-between;
 }
 
-@media (max-width:800px){
-
+@media (max-width:545px){
+  .main-navbar.responsive a {
+    font-size: 16px;
+  }
 }
 
 @media (max-width:1140px) {
@@ -66,6 +68,7 @@ img {
 }
 .main-navbar {
     float: right;
+
 }
 .main-navbar i {
 
@@ -77,12 +80,15 @@ img {
   float: left;
   display: block;
   color: #000000;
-  text-align: center;
   padding: 12px;
-  margin: 5px;
+  margin: 5px 0px 5px 5px;
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
+}
+
+.main-navbar a:nth-child(5){
+padding: 12px 0px 12px 0px;
 }
 
 .topnav a:hover {
@@ -118,6 +124,10 @@ img {
   .main-navbar a {
     display: none;
     margin: 0;
+  }
+
+  .main-navbar a:nth-child(5){
+    padding: 12px;
   }
   .main-navbar a.icon {
     display: block;
@@ -264,7 +274,7 @@ main {
 }
 
 .content {
-  margin: 5% auto;
+  margin: 2% auto;
   width: 100%;
   max-width: 500px;
   max-height: 700px;
@@ -278,10 +288,11 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+  top: 0;
 }
 .reverse {
 
-  margin: 5% auto;
+  margin: 2% auto;
   width: 100%;
   max-width: 500px;
   max-height: 700px;
@@ -297,29 +308,16 @@ main {
   color: #fff;
   padding-top: 10px;
   
-}
+} 
 
-.reverse-resp {
-
-  top: 8%;
-  margin: 5% auto;
-  width: 100%;
-  max-width: 800px;
-  max-height: 700px;
-  -webkit-animation-name: closemodal;
-          animation-name: closemodal;
-  -webkit-animation-duration: 0.8s;
-          animation-duration: 0.8s;
-  background: #232323;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  color: #fff;
-  padding-top: 10px;
-  display: flex;
+@media (max-width:800px) {
+  .reverse {
+    top: 8%;
+    max-width: 800px;
+    display: flex;
     justify-content: start;
     align-items: start;
-
+  }
 }
 
 .validation {
@@ -327,8 +325,12 @@ main {
   display: none;
   flex-direction: column;
   justify-content: end;
+  -webkit-animation-name: modalopen;
+  animation-name: modalopen;
+  -webkit-animation-duration: var(--modal-duration);
+  animation-duration: var(--modal-duration);
   gap: 40%;
-  margin: 5% auto;
+  margin: 2% auto;
   width: 100%;
   max-width: 500px;
   background: #232323;
@@ -345,7 +347,7 @@ main {
   flex-direction: column;
   justify-content: end;
   gap: 40%;
-  margin: 5% auto;
+  margin: 2% auto;
   width: 100%;
   max-width: 500px;
   background: #232323;
@@ -359,6 +361,13 @@ main {
   animation-name: closemodal;
   -webkit-animation-duration: var(--modal-duration);
   animation-duration: var(--modal-duration);
+}
+
+@media (max-width:800px) {
+  .validation, .validation-r {
+    max-width: 800px;
+    top: 8%;
+  }
 }
 
 .validation p,
@@ -666,7 +675,7 @@ input[data-error]::after {
 
 .btn-signup:hover,
 .btn-submit:hover,
-.btn-close {
+.btn-close:hover {
   background: #3876ac;
   transition: 0.25s;
 }
@@ -955,9 +964,7 @@ footer {
 @media (min-width:544px) and (max-width: 696px){
   
   .hero-headline {
-
     font-size: 60px;
-
   }
 
 }

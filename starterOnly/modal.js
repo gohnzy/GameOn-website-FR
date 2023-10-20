@@ -2,95 +2,80 @@
 let modalbg = document.querySelector(".bground");
 let modalBtn = document.querySelectorAll(".btn-signup");
 let formData = document.querySelectorAll(".formData");
-let closeBtn1 = document.getElementById("closeFormCross");
-let closeBtn2 = document.getElementById("closeValidationCross");
+let closeCross = document.querySelectorAll(".close");
+let closeBtn = document.querySelector(".btn-close")
 let content = document.getElementById("modalContent")
+let validationContent = document.querySelector(".validation")
 
 // responsive var
 let width800 = window.matchMedia("(max-width: 800px)")
 let width420 = window.matchMedia("(min-width: 420px)")
+
 // launch modal event
 
 modalBtn.forEach((btn) => btn.addEventListener("click",launchModal))
 
-// launch modal form
+// launch modal function
+
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-// close validation modal
-let closeV = document.querySelector(".btn-close")
+//close modal events
 
-function closeValidation(){
+closeCross.forEach((btn) => btn.addEventListener("click",()=>{
 
-  modalbg.style.display ="none"
-  modalbg.style.background = "rgba(26, 39, 156, 0.4)"
-  content.classList.replace("validation-r", "validation")
+    if(validationContent.style.display === "flex") {
+      validationContent.classList.replace("validation", "validation-r")
+      modalbg.style.background = "transparent"
+      setTimeout (closeModal, 400)
+    }
+    else {
+      content.classList.replace("content", "reverse")
+      modalbg.style.background = "transparent"
+      setTimeout (closeModal, 400)   
+    }
+}))
 
-}
+closeBtn.addEventListener("click", () => {
 
-closeV.addEventListener("click", () => {
-
-  validation.classList.replace("validation", "validation-r")
-  modalbg.style.background = "transparent"
-  setTimeout (closeValidation, 400)
-
-})
-
-closeBtn2.addEventListener("click", () => {
-
-  validation.classList.replace("validation", "validation-r")
-  modalbg.style.background = "transparent"
-  setTimeout (closeValidation, 400)
-
-}) 
-// close modal form
-
-function closeModal() {
-  
-  modalbg.style.display ="none"
-  if (width800.matches){
-    content.classList.replace("reverse-resp", "content")
-    modalbg.style.background = "transparent"
-
-  }
-  else {
-    modalbg.style.background = "rgba(26, 39, 156, 0.4)"
-    content.classList.replace("reverse", "content")
-   }
- 
-
-}
-
-
-
-// close modal event - button
-
-
-closeBtn1.addEventListener("click", () => {
-
-  if(width800.matches) {
-    content.classList.replace("content", "reverse-resp")
-  }
-
-  content.classList.replace("content", "reverse")
+  validationContent.classList.replace("validation", "validation-r")
   modalbg.style.background = "transparent"
   setTimeout (closeModal, 400)
 
 })
 
-// close modal event - outside click
-
 modalbg.addEventListener("click", (event) => {
 
   if (event.target === modalbg) { 
-
-    if(width800.matches) {
-      content.classList.replace("content", "reverse-resp")
+    if(validationContent.style.display === "flex") {
+      validationContent.classList.replace("validation", "validation-r")
+      modalbg.style.background = "transparent"
+      setTimeout (closeModal, 400)
     }
-    content.classList.replace("content", "reverse")
-    modalbg.style.background = "transparent"
-    setTimeout (closeModal, 400)
+    else {
+      content.classList.replace("content", "reverse")
+      modalbg.style.background = "transparent"
+      setTimeout (closeModal, 400)
+    }
+    
   }
 
 })
+
+// close modal function
+
+function closeModal() {
+  if(validationContent.style.display === "flex"){
+    modalbg.style.display ="none"
+    validationContent.classList.replace("validation-r", "validation")
+    modalbg.style.background = "rgba(26, 39, 156, 0.4)"
+  }
+  else { 
+    modalbg.style.display ="none"
+    content.classList.replace("reverse", "content")
+    modalbg.style.background = "rgba(26, 39, 156, 0.4)"
+  }
+ 
+}
+

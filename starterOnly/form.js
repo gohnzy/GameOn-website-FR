@@ -1,5 +1,7 @@
-// DOM Elements
+///// DOM Elements /////
+
 /// Form inputs
+
 let first = document.getElementById("first")
 let last = document.getElementById("last")
 let email = document.getElementById("email")
@@ -9,7 +11,9 @@ let locations = document.querySelectorAll("#locations input")
 let conditions = document.getElementById("checkbox1")
 let newsletter = document.getElementById("checkbox2")
 let btnSubmit = document.getElementById("submitForm")
+
 ///Form divs
+
 let formFirst = document.getElementById("formFirst")
 let formLast = document.getElementById("formLast")
 let formEmail = document.getElementById("formEmail")
@@ -17,6 +21,7 @@ let formBirthdate = document.getElementById("formBirthdate")
 let formTournaments = document.getElementById("formTournaments")
 let formLocation = document.getElementById("locations")
 let formConditions = document.getElementById("formConditions")
+
 // Gather location function
 
 function itLocation() {
@@ -30,8 +35,12 @@ function itLocation() {
 }
 
 // RegExp
-  let textRegExp = new RegExp("^[a-zA-Z-' ]+$")
+
+  let textRegExp = new RegExp("^[a-zA-Zà-ùÀ-Ù-' ]+$")
   let mailRegExp = new RegExp("^[a-z0-9.-_]+@[a-z0-9.-_]+\\.[a-z0-9.-_]+")
+
+//Age check
+
 function calcAge () {
   let age = 0
 
@@ -73,7 +82,8 @@ function calcAge () {
 
   return age
 }
-// Validate function
+// Validate functions
+
 function validate() {
   let validate = true
   if(first.value.length < 2 || !textRegExp.test(first.value)) {
@@ -217,17 +227,17 @@ formBirthdate.addEventListener("input",()=>{
 }
 validateLive()
 
+// form submit
+
 let form = document.querySelector("form")
 
 // Submit event
 
 form.addEventListener("submit", (event) => {
-  if (!validate() || !validateLive()) {
-    event.preventDefault()
-    
-  } 
-  else {
-    event.preventDefault()
-    console.log(first.value, last.value, email.value, birthdate.value,nbTournaments.value,itLocation(),conditions.checked)
+  event.preventDefault()
+  if(validate() || !validateLive()) {
+    content.style.display = "none";
+    validationContent.style.display = "flex";
   }
+  
 })
