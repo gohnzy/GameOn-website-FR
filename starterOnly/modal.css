@@ -668,6 +668,8 @@ input[data-error]::after {
 }
 
 .btn-close {
+  font-size: 14px;
+  font-weight: 500;
   width: 182px;
   text-align: center;
   padding: 12px 0px;

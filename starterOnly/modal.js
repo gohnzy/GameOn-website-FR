@@ -66,15 +66,21 @@ modalbg.addEventListener("click", (event) => {
 // close modal function
 
 function closeModal() {
+  if(width800.matches) {
+    modalbg.style.background = "transparent"
+  }
+  else {
+    modalbg.style.background = "rgba(26, 39, 156, 0.4)"
+  }
   if(validationContent.style.display === "flex"){
     modalbg.style.display ="none"
     validationContent.classList.replace("validation-r", "validation")
-    modalbg.style.background = "rgba(26, 39, 156, 0.4)"
+
   }
   else { 
     modalbg.style.display ="none"
     content.classList.replace("reverse", "content")
-    modalbg.style.background = "rgba(26, 39, 156, 0.4)"
+ 
   }
  
 }
