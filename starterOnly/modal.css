@@ -204,7 +204,6 @@ padding: 12px 0px 12px 0px;
 
 @media (max-width:1140px) {
   
-
   .header-logo img {
     display: block;
     width: 103px;
@@ -212,7 +211,6 @@ padding: 12px 0px 12px 0px;
     padding: 0;
   }
 }
-
 
 main {
   font-size: 130%;
@@ -531,7 +529,7 @@ form div {
 }
 
 #formTournaments + p {
-  font-size: 15px;
+
   margin:0;
 }
 
@@ -1003,4 +1001,3 @@ footer {
     opacity: 1;
   }
 }
-
